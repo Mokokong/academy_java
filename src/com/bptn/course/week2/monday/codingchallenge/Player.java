@@ -13,8 +13,9 @@ public class Player {
 	private String playerNumber;
 	
 	// Question: should scanner be static or not?
-	// Static: it needs to be accessible to all objects of the class
-	private static Scanner scanner = new Scanner(System.in);
+	// Static: it needs to be accessible to all objects of the class but that is subject to change if more classes 
+	// need a scanner obj
+	private Scanner scanner = new Scanner(System.in);
 	
 	public Player(String name, String playerNumber) {
 	    // complete constructor
