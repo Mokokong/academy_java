@@ -79,7 +79,7 @@ public class Game {
                 printWinner(currentPlayer);
                 noWinner = false;
             } else {
-                currentPlayerIndex = (currentPlayerIndex++ )%2;// reassign the variable to allow the game to continue. Note the index would wrap back to the first player if we are at the end. Think of using modulus (%).**
+                currentPlayerIndex = (currentPlayerIndex+1 )%2;// reassign the variable to allow the game to continue. Note the index would wrap back to the first player if we are at the end. Think of using modulus (%).**
             }
         }
     }
