@@ -1,15 +1,17 @@
 package com.bptn.course.week2.monday.codingchallenge;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import com.bptn.course.week2.monday.codingchallenge.Exceptions.*;
 
 /**
-The player class is concerned with descibing a player and things that relate to it. It keeps track of the name of a player, the order of the player in relation to other players in the game, and the move the player may want to make (which is just as simple as the user picking which column of the board they want their token to be dropped in). This class could also have logic to create only valid users. E.g. the playerNumber should not be greater than 4 based on the specification we've received.
+The player class is concerned with describing a player and things that relate to it. It keeps track of the name of a player, the order of the player in relation to other players in the game, and the move the player may want to make (which is just as simple as the user picking which column of the board they want their token to be dropped in). This class could also have logic to create only valid users. E.g. the playerNumber should not be greater than 4 based on the specification we've received.
 */
 public class Player {
 
 	private String name;
 	
-	// Add other instance variable(s)
+	
 	private String playerNumber;
 	
 	// Question: should scanner be static or not?
@@ -18,7 +20,7 @@ public class Player {
 	private Scanner scanner = new Scanner(System.in);
 	
 	public Player(String name, String playerNumber) {
-	    // complete constructor
+	   
 		this.name = name;
 		this.playerNumber = playerNumber;
 		
@@ -42,8 +44,19 @@ public class Player {
 	
 	public int makeMove() {
 	    System.out.println("Make your move. What column do you want to put a token in?");
-	    int column = scanner.nextInt();// receive user input
-	    scanner.nextLine(); // clean buffer
+	    int column ;
+	    try {
+	    	column = scanner.nextInt();
+			
+		} catch (InputMismatchException ime) {
+			System.out.println("\nColumns must be numbers not alphanumeric\n");
+			System.out.println("Re- make your move. What column do you want to put a token in?");
+			scanner.nextLine();
+			column = scanner.nextInt();
+			scanner.nextLine();
+		}
+	    
+	     
 	    return column;
 	}
 	
