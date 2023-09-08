@@ -8,6 +8,11 @@ class University {
     // property - get inspired by the UML diagram
 	
 	public ArrayList<Student> students;
+	
+	public University() {
+		
+		students = new ArrayList<Student>();
+	}
 
     public void addStudent(Student s) {
         // add a student to the "university" arraylist
