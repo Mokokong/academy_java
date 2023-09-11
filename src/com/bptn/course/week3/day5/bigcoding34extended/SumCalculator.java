@@ -10,6 +10,8 @@ class SumCalculator extends Thread {
     
     // The sum of the numbers in the range
     private int sum;
+    
+    private long executionTime;
 
     // Constructor to set the start and end points of the range
     public SumCalculator(int start, int end) {
@@ -24,15 +26,24 @@ class SumCalculator extends Thread {
     // Override the run method to calculate the sum of the numbers in the range
     public void run() {
         // Iterate through the numbers in the range and add them to the sum
+    	
+    	long start1 = System.nanoTime();
     	for (int i = start; i <= end; i++) {
 			sum +=i;
 			
 		}
-       
+    	long end1 = System.nanoTime(); 
+    	
+    	 executionTime=(end1-start1);
     }
 
     // Method to get the sum of the numbers in the range
+    
     public int getSum() {
         return sum;
+    }
+    
+    public long getExecutionTime() {
+    	return executionTime;
     }
 }

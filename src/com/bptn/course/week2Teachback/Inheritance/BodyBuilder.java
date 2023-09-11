@@ -62,8 +62,11 @@ public class BodyBuilder extends Person {
 	}
 	
 	
-	
-	
+//	public void toString(String name) {
+//		System.out.println(name);
+//		
+//	}
+//	
 	
 	
 }
