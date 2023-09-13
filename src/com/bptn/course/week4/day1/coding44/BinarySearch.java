@@ -30,7 +30,7 @@ public class BinarySearch {
         // If the element at the middle index is greater than the key, move the high pointer to the middle - 1
         
         if (list.get(middle) > key) {
-        	low = middle-1;	
+        	high = middle-1;	
 		}
    	}
       
