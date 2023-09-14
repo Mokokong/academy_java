@@ -22,87 +22,71 @@ class Main {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
+    
     static void merge(int arr[], int l, int m, int r) {
+    
+    	int arrayLeftLen = m-l+1;
+    	int arrayRightLen = r-m;
     	
+    	//  subarrays 
+    	int[] arrayLeft = new int[arrayLeftLen];
+    	int[] arrayRight = new int[arrayRightLen];
+    	
+    	// fill out subarrays
+    	
+    	for (int i = 0; i < arrayLeftLen; i++) {
+			arrayLeft[i] = arr[l+i];
+			
+		}
 
-    	ArrayList<Integer> arrayLeft = new ArrayList<>();
-    	ArrayList<Integer> arrayRight = new ArrayList<>();
-    	ArrayList<Integer> arraysorted = new ArrayList<>();
-    	
-    	// split  arr[] at middle
-//    	for (int i = 0; i < arr.length; i++) {
-//			
-//    		if (i<m+1) {
-//    			arrayLeft.add(arr[i]);
-//				
-//			}
-//    		else
-//    		{
-//    			arrayRight.add(arr[i]);
-//    		}
-//			
-//		}
-    	
-    	for (int i = l; i < m+1; i++) {
-    		arrayLeft.add(arr[i]);
+    	for (int i = 0; i < arrayRightLen; ++i) {
+			arrayRight[i] = arr[m+1+i];
+			
 		}
     	
     	
-    	for (int i = m+1; i < r; i++) {
-    		arrayRight.add(arr[i]);
+    	// merge sub arrays
+    	int i=0; //arrayLeft index
+    	int j=0; //arrayRight index
+    	int k=l; // mergeArray index starts @ l
+
+    	// while both subs still have elements
+    	while(i < arrayLeftLen && j < arrayRightLen ) {
+    		
+    		if (arrayLeft[i]<= arrayRight[j]) {
+    			
+    			arr[k] =arrayLeft[i];
+    			i++;
+				
+			} else {
+				
+				arr[k] =arrayRight[j];
+    			j++;
+
+			}
+    		k++;
+    	}
+    	
+    	// while arrayLeft still has elements
+    	while (i<arrayLeftLen) {
+    		arr[k]= arrayLeft[i];
+    		i++;
+    		k++;
+			
 		}
     	
-    	System.out.println("Passed info:\n");
+    	// while arrayRight still has elements
+    	while (j<arrayRightLen) {
+    		arr[k]= arrayRight[j];
+    		j++;
+    		k++;
+			
+		}
     	
-    	System.out.println(Arrays.toString(arr));
-    	System.out.println("l :"+l +" m :" + m + " r :" + r );
-    	
-    	System.out.println("Left array:\n");
-    	
-    	System.out.println(arrayLeft);
-    	
-    	System.out.println("Right array:\n");
-    	
-    	System.out.println(arrayRight);
-    	
-    	// begin merge
-    	// both arrays have elements
-//    	while(!arrayLeft.isEmpty() && !arrayRight.isEmpty()) {
-//    		
-//    		if (arrayLeft.get(0)>arrayRight.get(0)) {
-//    			
-//    			// add [0] of right array to end of sorted array while removing it from right array
-//    			arraysorted.add(arrayRight.remove(0));
-//				
-//			} else {
-//				// add [0] of left array to end of sorted array while removing it from right array
-//				arraysorted.add(arrayLeft.remove(0));
-//
-//			}
-//    	}//end of while
-    	
-    	
-    	// at this point either arrayLeft or arrayRight is empty
-    	
-//    	while (!arrayLeft.isEmpty()) {
-//    		
-//    		arraysorted.add(arrayLeft.remove(0));
-//		}
-//        
-//    	
-//    	
-//    	while (!arrayRight.isEmpty()) {
-//    		
-//    		arraysorted.add(arrayRight.remove(0));
-//		}
-//    	
-//    	
-//    	System.out.println("Sorted array:\n");
-//    	
-//    	System.out.println(arraysorted);
-        
     }
  
+
+    
     // Main function that sorts arr[l..r] using
     // merge()
     static void mergeSort(int arr[], int l, int r) {
