@@ -7,40 +7,35 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
+
 public class TwoSum {
 	// Method that returns the indices of two elements in the nums array that add up
 	// to the target value
 	public int[] twoSum(int[] nums, int target) {
 		// Initialize a HashMap to store the value of each element in the nums array and its index
 		Map<Integer, Integer> map = new HashMap<>();
+		
+
+		
+		List<Integer> numS = Arrays.stream(nums) 
+							.boxed()               
+							.collect(Collectors.toList()); 
 
 		// Loop through each element in the nums array
 		for (int num: nums) {
 			// Calculate the complement, which is the difference between the target and the
 			// current element
 			int complement = target - num;
-//			
-//			System.out.println("num:" +num);
-//			System.out.println("complement:" + complement);
 
 			// Check if the complement is found in the HashMap
 			if (map.containsKey(complement)) {
 				/* If the complement is found, return the index of the complement and the current index because these two indices correspond to two elements that add up to the target*/
 
-				
-				List<Integer> numS = Arrays.stream(nums) 
-                        					.boxed()               
-                        					.collect(Collectors.toList()); 
-				int val0 = numS.indexOf(num);
-				
-//				System.out.println(val0);
-				
-				
-				int[] found= new int[ ] {val0 = numS.indexOf(num),val0 = numS.indexOf(complement)};
-				return found;
+
+				return new int[] {numS.indexOf(complement),numS.indexOf(num)};
 			}
 			// If the complement is not found, put the current element and its index into the HashMap
-			map.put(num,Arrays.asList(nums).indexOf(num));
+			map.put(num,numS.indexOf(num));
 		}
 
 		// If no two sum solution is found, throw an IllegalArgumentException
